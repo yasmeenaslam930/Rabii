@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rabia — Nuxt Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#fdf4ff',
+              100: '#fae8ff',
+              200: '#f3d0fe',
+              300: '#e9a8fd',
+              400: '#d972f9',
+              500: '#c44df0',
+              600: '#a82ed4',
+              700: '#8b22ad',
+              800: '#72208e',
+              900: '#5d1d72',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['Fira Code', 'ui-monospace', 'SFMono-Regular'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Subtle gradient animation on hero */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+      background: linear-gradient(135deg, #1e1b4b, #4a044e, #1e1b4b, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+    /* Card hover lift */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(196, 77, 240, 0.15);
+    }
+    /* Skill pill shine */
+    .skill-pill {
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-pill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    .skill-pill:hover::after {
+      transform: translateX(100%);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #a82ed4; border-radius: 3px; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+  <!-- ── NAVBAR ── -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <img src="logo.png" alt="Rabia logo" class="h-8 w-8 rounded-lg object-contain" />
+        <span class="font-bold text-lg tracking-tight text-white group-hover:text-brand-400 transition-colors">rabii<span class="text-brand-500">.</span>dev</span>
+      </a>
+
+      <!-- Links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <li><a href="#about"    class="hover:text-white transition-colors">About</a></li>
+        <li><a href="#skills"   class="hover:text-white transition-colors">Skills</a></li>
+        <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
+        <li><a href="#contact"  class="hover:text-white transition-colors">Contact</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="#contact"
+         class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold transition-colors">
+        Hire me
+      </a>
+
+      <!-- Mobile hamburger (CSS-only toggle) -->
+      <label for="nav-toggle" class="md:hidden cursor-pointer text-slate-400 hover:text-white" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </label>
+    </nav>
+
+    <!-- Mobile menu -->
+    <input type="checkbox" id="nav-toggle" class="hidden peer" />
+    <div class="hidden peer-checked:block md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4">
+      <ul class="flex flex-col gap-4 text-sm font-medium text-slate-300">
+        <li><a href="#about"    class="hover:text-white transition-colors">About</a></li>
+        <li><a href="#skills"   class="hover:text-white transition-colors">Skills</a></li>
+        <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
+        <li><a href="#contact"  class="hover:text-white transition-colors">Contact</a></li>
+        <li><a href="#contact"  class="text-brand-400 font-semibold">Hire me →</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ── HERO ── -->
+  <section id="hero" class="animated-gradient min-h-screen flex items-center pt-16">
+    <div class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Text -->
+      <div class="space-y-7">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/60 border border-brand-700/50 text-brand-300 text-xs font-mono tracking-widest uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
+          Available for work
+        </span>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+          Hi, I'm <span class="text-brand-400">Rabia</span><br />
+          <span class="text-3xl md:text-4xl font-semibold text-slate-300">aka <span class="font-mono text-brand-300">rabii</span></span>
+        </h1>
+
+        <p class="text-lg text-slate-400 leading-relaxed max-w-md">
+          Nuxt full-stack developer crafting fast, modern web apps with
+          <span class="text-slate-200 font-medium">Nuxt UI</span>,
+          <span class="text-slate-200 font-medium">NuxtHub</span>,
+          <span class="text-slate-200 font-medium">Drizzle ORM</span>,
+          <span class="text-slate-200 font-medium">Cloudflare</span> &amp;
+          <span class="text-slate-200 font-medium">Vite</span>.
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="#projects"
+             class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold transition-colors shadow-lg shadow-brand-900/40">
+            View Projects
+          </a>
+          <a href="#contact"
+             class="px-6 py-3 rounded-xl border border-slate-700 hover:border-brand-500 text-slate-300 hover:text-white font-semibold transition-colors">
+            Get in touch
+          </a>
+        </div>
+      </div>
+
+      <!-- Profile image -->
+      <div class="flex justify-center md:justify-end">
+        <div class="relative">
+          <!-- Glow ring -->
+          <div class="absolute -inset-1 rounded-3xl bg-gradient-to-br from-brand-500 to-purple-900 opacity-70 blur-lg"></div>
+          <img src="Rabia.jpg"
+               alt="Rabia — Nuxt full-stack developer"
+               class="relative w-72 h-72 md:w-80 md:h-80 rounded-3xl object-cover border-2 border-brand-700/60 shadow-2xl" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="py-24 bg-slate-900">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <h2 class="text-3xl font-bold text-white mb-2">About <span class="text-brand-400">Me</span></h2>
+      <div class="w-12 h-1 bg-brand-500 rounded mb-12"></div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-5 text-slate-400 leading-relaxed text-[15px]">
+          <p>
+            I'm <span class="text-white font-semibold">Rabia</span>, a passionate full-stack web developer
+            with a focus on the <span class="text-brand-300 font-medium">Nuxt ecosystem</span>. I build
+            end-to-end web applications — from polished, accessible UIs to scalable server-side APIs and
+            edge-deployed backends.
+          </p>
+          <p>
+            My go-to stack pairs <span class="text-white font-medium">Nuxt 3</span> with
+            <span class="text-white font-medium">Nuxt UI</span> for beautiful component-driven interfaces,
+            <span class="text-white font-medium">NuxtHub</span> for seamless deployment,
+            <span class="text-white font-medium">Drizzle ORM</span> for type-safe database queries, and
+            <span class="text-white font-medium">Cloudflare Workers + D1</span> for blazing-fast edge
+            performance — all powered by <span class="text-white font-medium">Vite</span> under the hood.
+          </p>
+          <p>
+            I love clean code, great DX, and turning complex ideas into simple, beautiful products.
+          </p>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="card-hover bg-slate-800 rounded-2xl p-6 border border-slate-700/60">
+            <p class="text-4xl font-extrabold text-brand-400">2+</p>
+            <p class="text-sm text-slate-400 mt-1">Years of experience</p>
+          </div>
+          <div class="card-hover bg-slate-800 rounded-2xl p-6 border border-slate-700/60">
+            <p class="text-4xl font-extrabold text-brand-400">15+</p>
+            <p class="text-sm text-slate-400 mt-1">Projects delivered</p>
+          </div>
+          <div class="card-hover bg-slate-800 rounded-2xl p-6 border border-slate-700/60">
+            <p class="text-4xl font-extrabold text-brand-400">5+</p>
+            <p class="text-sm text-slate-400 mt-1">Happy clients</p>
+          </div>
+          <div class="card-hover bg-slate-800 rounded-2xl p-6 border border-slate-700/60">
+            <p class="text-4xl font-extrabold text-brand-400">∞</p>
+            <p class="text-sm text-slate-400 mt-1">Cups of chai ☕</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="py-24 bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <h2 class="text-3xl font-bold text-white mb-2">Tech <span class="text-brand-400">Stack</span></h2>
+      <div class="w-12 h-1 bg-brand-500 rounded mb-12"></div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card: Core -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <!-- Nuxt icon placeholder -->
+              <svg class="w-5 h-5 text-brand-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.5 3L2 21h9l1.5-2.5L14 21h8L13.5 3zm0 4.5L19.5 19H14l-2-3.5-2 3.5H5.5L13.5 7.5z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Framework</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Nuxt 3</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Vue 3</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Nuxt UI</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Vite</span>
+          </div>
+        </div>
+
+        <!-- Card: Backend / DB -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M3 5v6c0 1.657 4.03 3 9 3s9-1.343 9-3V5"/>
+                <path d="M3 11v6c0 1.657 4.03 3 9 3s9-1.343 9-3v-6"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Backend &amp; Database</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Drizzle ORM</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">NuxtHub</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">SQLite / D1</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Card: Deployment -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h10a4 4 0 000-8 5 5 0 00-9.9-1A4 4 0 003 15z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Deployment &amp; Edge</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Cloudflare</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Workers</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Pages</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">NuxtHub Deploy</span>
+          </div>
+        </div>
+
+        <!-- Card: Styling -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Styling</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Tailwind CSS</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Nuxt UI</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">CSS3</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Card: Tools -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Tools &amp; Workflow</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Git / GitHub</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">VS Code</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">Figma</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">npm / pnpm</span>
+          </div>
+        </div>
+
+        <!-- Card: Language -->
+        <div class="card-hover bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-900/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white">Languages</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">TypeScript</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">JavaScript</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">HTML5</span>
+            <span class="skill-pill px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 hover:border-brand-500 hover:text-white transition-colors cursor-default">CSS3</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="py-24 bg-slate-900">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <h2 class="text-3xl font-bold text-white mb-2">Featured <span class="text-brand-400">Projects</span></h2>
+      <div class="w-12 h-1 bg-brand-500 rounded mb-12"></div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Project 1 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-brand-500 to-purple-600"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">NuxtHub SaaS Starter</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Nuxt 3</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              Full-stack SaaS boilerplate using NuxtHub, Drizzle ORM, Cloudflare D1, and Nuxt UI.
+              Includes auth, billing hooks, and edge deployment out of the box.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">NuxtHub</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Cloudflare</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-violet-500 to-brand-500"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">Edge Blog Platform</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Edge</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              A blazing-fast blog platform deployed on Cloudflare Pages with server-side rendering,
+              markdown support, and a Drizzle-powered CMS admin panel.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Cloudflare</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Markdown</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-purple-600 to-pink-500"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">UI Component Library</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">UI</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              Custom Nuxt UI component library with 20+ reusable, accessible components.
+              Fully typed with TypeScript and documented with live previews via Vite.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt UI</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">TypeScript</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Vite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-brand-400 to-cyan-500"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">Real-time Dashboard</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Full-Stack</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              Analytics dashboard with real-time data updates using Nuxt server-sent events,
+              Drizzle ORM queries, and beautiful charts built with Nuxt UI.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">SSE</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-emerald-500 to-brand-500"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">E-commerce Store</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Commerce</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              Lightweight e-commerce platform with product management, cart, and checkout —
+              deployed on Cloudflare Workers with sub-50ms global response times.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Workers</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+          <div class="h-2 bg-gradient-to-r from-orange-500 to-brand-400"></div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-white text-lg">Dev Portfolio CMS</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">CMS</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed flex-1">
+              Headless CMS built for developers. Write content in markdown, manage via a
+              Nuxt admin panel, serve via a type-safe API powered by Drizzle + D1.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">NuxtHub</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">D1</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Markdown</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="py-24 bg-slate-950">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+
+      <h2 class="text-3xl font-bold text-white mb-2">Let's <span class="text-brand-400">Connect</span></h2>
+      <div class="w-12 h-1 bg-brand-500 rounded mb-6 mx-auto"></div>
+      <p class="text-slate-400 text-lg mb-12">
+        Got a project in mind? I'd love to hear about it. Reach out on WhatsApp or drop a message anywhere below.
+      </p>
+
+      <!-- Contact cards -->
+      <div class="grid sm:grid-cols-2 gap-5 mb-12">
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/message/chocogirl108"
+           target="_blank" rel="noopener noreferrer"
+           class="card-hover group flex items-center gap-4 bg-slate-900 border border-slate-800 hover:border-green-500/60 rounded-2xl p-5 text-left transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-green-900/40 flex items-center justify-center flex-shrink-0 group-hover:bg-green-900/70 transition-colors">
+            <!-- WhatsApp icon -->
+            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 mb-0.5">WhatsApp</p>
+            <p class="font-semibold text-white">@chocogirl108</p>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/rabii"
+           target="_blank" rel="noopener noreferrer"
+           class="card-hover group flex items-center gap-4 bg-slate-900 border border-slate-800 hover:border-slate-500 rounded-2xl p-5 text-left transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-slate-800/80 flex items-center justify-center flex-shrink-0 group-hover:bg-slate-700/80 transition-colors">
+            <svg class="w-6 h-6 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 mb-0.5">GitHub</p>
+            <p class="font-semibold text-white">github.com/rabii</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Email CTA box -->
+      <div class="bg-gradient-to-br from-brand-900/40 to-slate-900 border border-brand-800/50 rounded-2xl p-8">
+        <p class="text-slate-300 text-base mb-2 font-medium">Open to freelance &amp; collaboration</p>
+        <p class="text-slate-500 text-sm mb-6">
+          Whether it's a quick question or a full project — just ping me on WhatsApp at
+          <span class="text-brand-300 font-mono">@chocogirl108</span>
+        </p>
+        <a href="https://wa.me/message/chocogirl108"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold transition-colors shadow-lg shadow-green-900/30">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <img src="logo.png" alt="logo" class="h-6 w-6 rounded object-contain" />
+        <span class="text-slate-400 text-sm font-medium">rabii<span class="text-brand-500">.</span>dev</span>
+      </div>
+      <p class="text-slate-600 text-sm">© 2026 Rabia. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/message/chocogirl108" target="_blank" rel="noopener noreferrer"
+           class="text-slate-500 hover:text-green-400 transition-colors" aria-label="WhatsApp">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/rabii" target="_blank" rel="noopener noreferrer"
+           class="text-slate-500 hover:text-white transition-colors" aria-label="GitHub">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -160,16 +160,96 @@
           Hi, I'm <span class="text-brand-400">Rabia</span>
         </h1>
 
-        <p class="text-lg text-slate-400 leading-relaxed max-w-md">
-          Nuxt full-stack developer crafting fast, modern web apps with
-          <span class="text-slate-200 font-medium">Vue.js</span>,
-          <span class="text-slate-200 font-medium">TypeScript</span>,
-          <span class="text-slate-200 font-medium">Nuxt UI</span>,
-          <span class="text-slate-200 font-medium">NuxtHub</span>,
-          <span class="text-slate-200 font-medium">Drizzle ORM</span>,
-          <span class="text-slate-200 font-medium">Cloudflare</span> &amp;
-          <span class="text-slate-200 font-medium">Vite</span>.
-        </p>
+        <!-- Tech stack icons -->
+        <div class="flex flex-wrap gap-3">
+
+          <!-- Vue.js -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M2 3h3.5L12 15l6.5-12H22L12 21 2 3z" fill="#42b883"/>
+              <path d="M6.5 3H10l2 3.7L14 3h3.5L12 13 6.5 3z" fill="#35495e"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Vue.js</span>
+          </div>
+
+          <!-- Nuxt -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M13.5 3L6 16.5h4.5L12 14l1.5 2.5H21L13.5 3z" fill="#00DC82"/>
+              <path d="M6 16.5H3L8.25 7.5 10.5 11.5 6 16.5z" fill="#00DC82" opacity="0.6"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Nuxt 3</span>
+          </div>
+
+          <!-- TypeScript -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="24" height="24" rx="3" fill="#3178c6"/>
+              <path d="M13.5 12H11v7H9v-7H6.5v-2h7v2zM14 18.5c.5.3 1.2.5 2 .5 1.8 0 2.8-.9 2.8-2.2 0-1.1-.6-1.8-2-2.3-.9-.3-1.2-.6-1.2-1 0-.4.3-.7.9-.7.6 0 1.1.2 1.5.5l.5-1.5c-.5-.3-1.2-.5-2-.5-1.6 0-2.7.9-2.7 2.2 0 1 .6 1.7 2 2.2.9.3 1.2.6 1.2 1.1 0 .5-.3.8-1 .8-.7 0-1.3-.3-1.8-.6L14 18.5z" fill="white"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">TypeScript</span>
+          </div>
+
+          <!-- Nuxt UI -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <rect width="24" height="24" rx="5" fill="#00DC82" opacity="0.15"/>
+              <path d="M6 8h12M6 12h8M6 16h10" stroke="#00DC82" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Nuxt UI</span>
+          </div>
+
+          <!-- NuxtHub -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#00DC82" stroke-width="2"/>
+              <path d="M12 7v5l3 3" stroke="#00DC82" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">NuxtHub</span>
+          </div>
+
+          <!-- Drizzle -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z" fill="#c5f74f" opacity="0.85"/>
+              <path d="M4 6v4c0 1.1 3.6 2 8 2s8-.9 8-2V6" stroke="#c5f74f" stroke-width="1.5" fill="none"/>
+              <path d="M4 10v4c0 1.1 3.6 2 8 2s8-.9 8-2v-4" stroke="#c5f74f" stroke-width="1.5" fill="none" opacity="0.6"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Drizzle</span>
+          </div>
+
+          <!-- Cloudflare -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M16.5 10.5a4.5 4.5 0 00-8.46-1.5A3 3 0 004 12a3 3 0 003 3h9a3 3 0 000-6 3.1 3.1 0 00-.5.04z" fill="#f6821f"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Cloudflare</span>
+          </div>
+
+          <!-- Vite -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l1.5 9L12 22l8.5-6L22 7 12 2z" fill="url(#viteGrad)" opacity="0.9"/>
+              <path d="M12 6l-4 8h3l-1 4 6-9h-3l1-3H12z" fill="white" opacity="0.9"/>
+              <defs>
+                <linearGradient id="viteGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#bd34fe"/>
+                  <stop offset="100%" stop-color="#41d1ff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Vite</span>
+          </div>
+
+          <!-- Tailwind -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 hover:border-brand-500 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35.98 1 2.09 2.15 4.6 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C15.62 7.15 14.51 6 12 6zm-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35C7.38 16.85 8.49 18 11 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C9.62 13.15 8.51 12 7 12z" fill="#38bdf8"/>
+            </svg>
+            <span class="text-sm font-medium text-slate-300">Tailwind</span>
+          </div>
+
+        </div>
 
         <div class="flex flex-wrap gap-3">
           <a href="#projects"
@@ -383,124 +463,84 @@
       <h2 class="text-3xl font-bold text-white mb-2">Featured <span class="text-brand-400">Projects</span></h2>
       <div class="w-12 h-1 bg-brand-500 rounded mb-12"></div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
-        <!-- Project 1 -->
+        <!-- Project 1: Todos CRUD -->
         <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-brand-500 to-purple-600"></div>
+          <div class="h-2 bg-gradient-to-r from-brand-500 to-violet-600"></div>
           <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">NuxtHub SaaS Starter</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Nuxt 3</span>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-brand-900/50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-lg leading-tight">Todos CRUD App</h3>
+                <span class="text-xs text-brand-400 font-mono">Full-Stack</span>
+              </div>
             </div>
             <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              Full-stack SaaS boilerplate using NuxtHub, Drizzle ORM, Cloudflare D1, and Nuxt UI.
-              Includes auth, billing hooks, and edge deployment out of the box.
+              A full-stack to-do application with create, read, update and delete operations,
+              built with Nuxt 3, Drizzle ORM, and deployed on Cloudflare via NuxtHub.
             </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">NuxtHub</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Cloudflare</span>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M13.5 3L6 16.5h4.5L12 14l1.5 2.5H21L13.5 3z" fill="#00DC82"/></svg>
+                Nuxt 3
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#3178c6"/><path d="M13.5 12H11v7H9v-7H6.5v-2h7v2zM14 18.5c.5.3 1.2.5 2 .5 1.8 0 2.8-.9 2.8-2.2 0-1.1-.6-1.8-2-2.3-.9-.3-1.2-.6-1.2-1 0-.4.3-.7.9-.7.6 0 1.1.2 1.5.5l.5-1.5c-.5-.3-1.2-.5-2-.5-1.6 0-2.7.9-2.7 2.2 0 1 .6 1.7 2 2.2.9.3 1.2.6 1.2 1.1 0 .5-.3.8-1 .8-.7 0-1.3-.3-1.8-.6L14 18.5z" fill="white"/></svg>
+                TypeScript
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z" fill="#c5f74f" opacity="0.85"/><path d="M4 6v4c0 1.1 3.6 2 8 2s8-.9 8-2V6" stroke="#c5f74f" stroke-width="1.5" fill="none"/></svg>
+                Drizzle
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M16.5 10.5a4.5 4.5 0 00-8.46-1.5A3 3 0 004 12a3 3 0 003 3h9a3 3 0 000-6 3.1 3.1 0 00-.5.04z" fill="#f6821f"/></svg>
+                Cloudflare
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00DC82" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#00DC82" stroke-width="2" stroke-linecap="round"/></svg>
+                NuxtHub
+              </span>
             </div>
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2: Portfolio -->
         <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-violet-500 to-brand-500"></div>
+          <div class="h-2 bg-gradient-to-r from-violet-500 to-pink-500"></div>
           <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">Edge Blog Platform</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Edge</span>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-violet-900/50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-lg leading-tight">Portfolio Website</h3>
+                <span class="text-xs text-violet-400 font-mono">Frontend</span>
+              </div>
             </div>
             <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              A blazing-fast blog platform deployed on Cloudflare Pages with server-side rendering,
-              markdown support, and a Drizzle-powered CMS admin panel.
+              This portfolio — a clean, responsive static site showcasing my work and stack.
+              Built with pure HTML and Tailwind CSS, no build step required.
             </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Cloudflare</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Markdown</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-purple-600 to-pink-500"></div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">UI Component Library</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">UI</span>
-            </div>
-            <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              Custom Nuxt UI component library with 20+ reusable, accessible components.
-              Fully typed with TypeScript and documented with live previews via Vite.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt UI</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">TypeScript</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Vite</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-brand-400 to-cyan-500"></div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">Real-time Dashboard</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Full-Stack</span>
-            </div>
-            <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              Analytics dashboard with real-time data updates using Nuxt server-sent events,
-              Drizzle ORM queries, and beautiful charts built with Nuxt UI.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">SSE</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-emerald-500 to-brand-500"></div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">E-commerce Store</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">Commerce</span>
-            </div>
-            <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              Lightweight e-commerce platform with product management, cart, and checkout —
-              deployed on Cloudflare Workers with sub-50ms global response times.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Nuxt 3</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Workers</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Drizzle</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="card-hover bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
-          <div class="h-2 bg-gradient-to-r from-orange-500 to-brand-400"></div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-bold text-white text-lg">Dev Portfolio CMS</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full bg-brand-900/60 text-brand-300 border border-brand-800">CMS</span>
-            </div>
-            <p class="text-slate-400 text-sm leading-relaxed flex-1">
-              Headless CMS built for developers. Write content in markdown, manage via a
-              Nuxt admin panel, serve via a type-safe API powered by Drizzle + D1.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">NuxtHub</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">D1</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">Markdown</span>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M4 3h16l-1.5 16L12 21l-6.5-2L4 3z" fill="#e34c26"/><path d="M12 5v14l5-1.5 1.3-13.5H12z" fill="#ef652a" opacity="0.6"/></svg>
+                HTML5
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35.98 1 2.09 2.15 4.6 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C15.62 7.15 14.51 6 12 6zm-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35C7.38 16.85 8.49 18 11 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C9.62 13.15 8.51 12 7 12z" fill="#38bdf8"/></svg>
+                Tailwind CSS
+              </span>
+              <span class="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><path d="M16.5 10.5a4.5 4.5 0 00-8.46-1.5A3 3 0 004 12a3 3 0 003 3h9a3 3 0 000-6 3.1 3.1 0 00-.5.04z" fill="#f6821f"/></svg>
+                Cloudflare
+              </span>
             </div>
           </div>
         </div>
